@@ -14,5 +14,11 @@ select.onchange = () => {
 
 	const selectedPokemon = axios.get(`https://pokeapi.co/api/v2/pokemon/${selection}/`).then(({ data }) => {
 		document.getElementById('display').innerText = `${data.id}. ${selection}`;
+
+		const sprite = document.createElement('img');
+		sprite.setAttribute('src', `${data.sprites.front_default}`);
+
+		const displayDiv = document.getElementById('display-div');
+		displayDiv.appendChild(sprite);
 	});
 };
