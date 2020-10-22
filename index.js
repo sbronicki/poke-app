@@ -1,17 +1,18 @@
 const select = document.getElementById('pokedex');
 
-function getPokemon() {
-	const pokemon = axios.get('https://pokeapi.co/api/v2/pokemon?limit=151').then(({ data }) => {
-		for (let poke of data.results) {
-			console.log(poke.name);
-			select.options[select.options.length] = new Option(poke.name);
-		}
-	});
-}
+// fill select with pokeapi data
+const pokemon = axios.get('https://pokeapi.co/api/v2/pokemon?limit=151').then(({ data }) => {
+	for (let poke of data.results) {
+		console.log(poke.name);
+		select.options[select.options.length] = new Option(poke.name);
+	}
+});
 
-getPokemon();
-
+// display selection & display with sprite from api
 select.onchange = () => {
 	let selection = event.target.value;
-	document.getElementById('display').innerText = selection;
+
+	const selectedPokemon = axios.get(`https://pokeapi.co/api/v2/pokemon/${selection}/`).then(({ data }) => {
+		document.getElementById('display').innerText = `${data.id}. ${selection}`;
+	});
 };
