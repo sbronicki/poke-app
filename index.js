@@ -4,7 +4,6 @@ const select = document.getElementById('pokedex');
 const pokemon = axios.get('https://pokeapi.co/api/v2/pokemon?limit=151')
 	.then(({ data }) => {
 		for (let poke of data.results) {
-			console.log(poke.name);
 			select.options[select.options.length] = new Option(poke.name);
 		}
 	});
@@ -78,7 +77,7 @@ select.onchange = () => {
 			sprite.setAttribute('src', `${data.sprites.front_default}`);
 			// return species url to .get pokedex entry 
 			const pokedexEntryURL = data.species.url;
-			console.log(pokedexEntryURL)
+			// console.log(pokedexEntryURL)
 			// need to await to .get pokedex entry url and display it
 		});
 };
@@ -89,3 +88,5 @@ select.onchange = () => {
 // 					let displayP = document.getElementById('display-p');
 // 					console.log(displayP.innerText)
 // 				})
+
+console.log('this app uses axios to make a request to pokeapi.co to fill the select with the original 151 pokémon, then after a selection is made by a user, another request is made to the api for that selected pokemon in order to display the typing and id-number, background color is also changed according to the selected pokemons typing. coming soon real pokedex entries will be displayed under the typing')
