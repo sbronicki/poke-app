@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pokédex</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body>
 
-  <div class="container" id="container" name="SelectURL">
-    <h1>Choose Pokémon</h1>
-    <select id="pokedex"></select>  
-    <img  src="clipart2929498.png" alt="">
+<body>
+  <div id="col-1" class="container column">
+    <img src="billPokeGenuis.png" alt="">
+    <div class="img-description">
+      <h2>Masaki Sonezaki (Bill)</h2>
+      <p>Bill is an inventer and all around pokémon genius, just like you!</p>
+    </div>
   </div>
 
-    <div id="display-div">
+  <div class="container column" id="col-2">
+    <h1>Choose Pokémon</h1>
+    <select id="pokedex"></select>
+    <div class="description">
       <h2 id="display-text">1. bulbasaur</h2>
-      <img id="display-img" class="selection" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="">
+      <div id="display-div">
+        <img id="display-img" class="selection"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="">
+      </div>
+      <h2 id="display-h2">Type: Grass</h2>
+      <p id="display-p">Bulbasaur is a pokemon!!</p>
     </div>
-  
-  
+  </div>
+
+  <div id="col-3" class="container column">
+    <img src="clipart2929498.png" alt="">
+    <div class="img-description">
+      <h2>Red</h2>
+      <p>Red from Pallet Town is the legendary, strongest trainer ever! Seen here using the pokemon storage system, one
+        of Bill's many
+        inventions!</p>
+    </div>
+  </div>
 
 </body>
 <script src="index.js"></script>
+
 </html>
