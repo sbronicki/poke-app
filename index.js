@@ -14,7 +14,8 @@ const pokemon = axios.get('https://pokeapi.co/api/v2/pokemon?limit=151')
 select.onchange = () => {
 	let selection = event.target.value;
 
-	axios.get(`https://pokeapi.co/api/v2/pokemon/${selection}/`)
+	axios
+		.get(`https://pokeapi.co/api/v2/pokemon/${selection}/`)
 		.then(({ data }) => {
 			// display id & name
 			document.getElementById('display-text').innerText = `${data.id}. ${selection}`;
@@ -73,10 +74,8 @@ select.onchange = () => {
 			//display sprite
 			const sprite = document.getElementById('display-img');
 			sprite.setAttribute('src', `${data.sprites.front_default}`);
-			// return species url to .get pokedex entry 
+			// get species url for pokedex entry 
 			const pokedexEntryURL = data.species.url;
-			console.log(pokedexEntryURL)
-
 			axios
 				.get(pokedexEntryURL)
 				.then(({ data }) => {
@@ -85,13 +84,3 @@ select.onchange = () => {
 				})
 		})
 };
-
-
-
-
-	// axios.get(pokedexEntryURL)
-	// 	.then(({ data }) => {
-	// 		const pokedexEntry = data.flavor_text_entries[0].flavor_text;
-	// 		let displayP = document.getElementById('display-p');
-	// 		console.log(displayP.innerText)
-	// 	})
