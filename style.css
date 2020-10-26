@@ -22,7 +22,12 @@ body {
 img {
 	max-width: 300px;
 	padding-top: 50px;
+	
 }
+/* #display-img{
+	border: solid 2px #111;
+	border-radius: 5%;
+} */
 .selection {
 	width: 300px;
 	padding-top: 0;
@@ -31,19 +36,22 @@ img {
 	flex-direction: column;
 }
 
-#col-1{
-	
+#col-1 p, #col-3 p{
+	max-width: 350px;
+	margin: auto;
 }
 #col-2{
 	background-color: cadetblue;
 	justify-content: start;
 }
 #display-p{
-	display: none;
+	max-width: 250px;
+	margin: auto;
+	font-size: 24px;
 }
 
 #col-2 h1{
-	padding-top: 100px;
+	padding-top: 50px;
 	padding-bottom: 10px;
 }
 #col-2 select{
@@ -55,13 +63,10 @@ img {
 	padding-top: 20px;
 }
 #col-2 h2{
-	padding-bottom: 10px;
+	padding: 10px 0px
 }
 #col-3 {
 	
-}
-.img-descriptions p{
-	width: 80%;
 }
 /* media queries such that red and bill are hidden */
 @media(max-width: 768px){
