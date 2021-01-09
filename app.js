@@ -74,8 +74,7 @@ select.onchange = () => {
 		axios.get(pokedexEntryURL).then(({ data }) => {
 			let displayP = document.getElementById('display-p');
 			apiDescription = data.flavor_text_entries[0].flavor_text;
-			console.log(apiDescription);
-			displayP.innerText = grammerFix(apiDescription);
+			displayP.innerText = grammarFix(apiDescription);
 		});
 	});
 };
@@ -84,10 +83,10 @@ select.onchange = () => {
 function titleCase(str) {
 	return str.toLowerCase().replace(/(^|\s)\S/g, (L) => L.toUpperCase());
 }
-// api sentence grammer fix
+// api sentence grammar fix
 // api descriptions are filled with random line breaks both between and in the middle of words. i have no idea how to determine if a break is between two words or in the middle of one, but it seems there are more instances in which the break is between words so i will fix that, however this will result in some words having a random space in it... at least the sentence structure will be nicer looking (alternative to this would be that two words would be conjoined and this would be much more frequent)
 
-function grammerFix(str) {
+function grammarFix(str) {
 	let split = str.split(' ');
 	let resultArr = [];
 	let index = 0;
@@ -96,7 +95,7 @@ function grammerFix(str) {
 			newEl = element.replace('\n', ' ');
 			resultArr.splice(index, 0, newEl);
 		} else if (element.includes('\u000c')) {
-			newEl = element.replace('\n', ' ');
+			newEl = element.replace('\u000c', ' ');
 			resultArr.splice(index, 0, newEl);
 		} else {
 			resultArr.splice(index, 0, element);
@@ -104,8 +103,10 @@ function grammerFix(str) {
 		if (element.includes('POKéMON')) {
 			newEl = newEl = element.replace('POKéMON', 'pokémon');
 			resultArr.splice(index, 0, newEl);
+			resultArr.pop();
 		}
 		index++;
 	});
+	console.log(resultArr);
 	return resultArr.join(' ');
 }
