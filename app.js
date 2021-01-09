@@ -101,6 +101,10 @@ function grammerFix(str) {
 		} else {
 			resultArr.splice(index, 0, element);
 		}
+		if (element.includes('POKéMON')) {
+			newEl = newEl = element.replace('POKéMON', 'pokémon');
+			resultArr.splice(index, 0, newEl);
+		}
 		index++;
 	});
 	return resultArr.join(' ');
